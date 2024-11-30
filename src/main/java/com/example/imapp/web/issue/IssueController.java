@@ -1,6 +1,6 @@
 package com.example.imapp.web.issue;
 
-import com.example.imapp.issue.IssueService;
+import com.example.imapp.domain.issue.IssueService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

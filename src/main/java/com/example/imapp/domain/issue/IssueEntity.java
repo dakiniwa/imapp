@@ -1,4 +1,4 @@
-package com.example.imapp.issue;
+package com.example.imapp.domain.issue;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
