@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>課題作成 | 課題管理アプリケーション</title>
+</head>
+<body>
+<h1 class="mt-3">課題作成</h1>
+<form action="#" th:action="@{/issues}" th:method="post" th:object="${issueForm}">
+    <div class="mt-3">
+        <label class="form-label" for="summaryInput">概要</label>
+        <input class="form-control" id="summaryInput" th:classappend="${#fields.hasErrors('summary')} ? is-invalid"
+               th:field="*{summary}"
+               type="text">
+        <p class="invalid-feedback" th:errors="*{summary}" th:if="${#fields.hasErrors('summary')}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <label class="form-label" for="descriptionInput">説明</label>
+        <textarea class="form-control" id="descriptionInput" row="10"
+                  th:classappend="${#fields.hasErrors('description')} ? is-invalid"
+                  th:field="*{description}"></textarea>
+        <p class="invalid-feedback" th:errors="*{description}" th:if="${#fields.hasErrors('description')}">(error)</p>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit">作成</button>
+        <a class="btn btn-secondary" href="./list.html" th:href="@{/issues}">キャンセル</a>
+    </div>
+</form>
+</body>
+</html>
