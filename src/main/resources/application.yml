@@ -1,0 +1,16 @@
+spring:
+  # アプリケーション名
+  application:
+    name: imapp
+
+  # データベース接続
+  datasource:
+    data-source-class-name: org.h2.Driver
+    url: jdbc:h2:mem:imapp;DB_CLOSE_ON_EXIT=TRUE;MODE=MySQL
+    username: sa
+    password:
+
+  # devtools設定
+  devtools:
+    restart:
+      enabled: true
