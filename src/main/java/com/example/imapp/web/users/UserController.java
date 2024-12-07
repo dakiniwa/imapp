@@ -3,6 +3,8 @@ package com.example.imapp.web.users;
 import com.example.imapp.domain.auth.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +32,13 @@ public class UserController {
     }
 
     @PostMapping
-    public String create(UserForm form) {
+    public String create(@Validated UserForm form, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return showCreationForm(form);
+        }
+
+        userService.create(form.getUsername(), form.getPassword());
         return "redirect:/users";
     }
 }
