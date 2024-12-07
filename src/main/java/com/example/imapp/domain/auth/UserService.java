@@ -1,5 +1,6 @@
 package com.example.imapp.domain.auth;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,8 +10,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<User> findAll() {
@@ -18,6 +22,7 @@ public class UserService {
     }
 
     public void create(String username, String password) {
-        userRepository.insert(username, password);
+        var encodedPassword = passwordEncoder.encode(password);
+        userRepository.insert(username, encodedPassword);
     }
 }
