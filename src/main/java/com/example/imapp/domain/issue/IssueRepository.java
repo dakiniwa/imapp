@@ -1,4 +1,4 @@
-package com.example.imapp.issue;
+package com.example.imapp.domain.issue;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

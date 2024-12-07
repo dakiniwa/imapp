@@ -1,0 +1,23 @@
+package com.example.imapp.domain.auth;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public void create(String username, String password) {
+        userRepository.insert(username, password);
+    }
+}
