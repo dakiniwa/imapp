@@ -13,8 +13,11 @@ public class UserForm {
     @NotBlank
     @UniqueUsername
     private String username;
-    
+
     @NotBlank
     @Size(min = 12, max = 128)
     private String password;
+
+    @NotBlank(message = "権限を選択してください")
+    private String authority;
 }
