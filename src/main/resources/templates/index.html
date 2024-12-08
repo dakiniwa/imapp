@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html th:replace="~{fragments/layout :: layout(~{::title}, ~{::body})}"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <title>トップページ | 課題管理アプリケーション</title>
 </head>
@@ -10,7 +11,7 @@
     <li>
         <a href="./issues/list.html" th:href="@{/issues}">課題一覧</a>
     </li>
-    <li>
+    <li sec:authorize="hasAuthority('ADMIN')">
         <a href="./users/list.html" th:href="@{/users}">ユーザー一覧</a>
     </li>
     <li>
